@@ -1,9 +1,9 @@
 <?php
-    /* 
-    * Script by @Cyril Lopez 
-    * For display Netatmo informations on Pebble watch
-    * From Netatmo API
-    */ 
+/* 
+* Script by @Cyril Lopez 
+* For display Netatmo informations on Pebble watch
+* From Netatmo API
+*/ 
     
 // Mettre ce paramètre à true la première fois pour afficher la liste des stations et récupérer les adresses MAC pour $device_id et $module_id
 $display_list_devices = false; //true or false
