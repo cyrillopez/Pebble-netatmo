@@ -46,10 +46,15 @@ $response = file_get_contents($token_url, false, $context);
 $params = null;
 $params = json_decode($response, true);
 
-$api_liste = "https://api.netatmo.net/api/devicelist?access_token=" . $params['access_token'];
-$api_url_int = "https://api.netatmo.net/api/getmeasure?access_token=" . $params['access_token'] . "&device_id=" . $device_id . "&scale=max&type=Temperature,CO2,Humidity,Pressure,Noise&date_end=last";
-$api_url_ext = "https://api.netatmo.net/api/getmeasure?access_token=" . $params['access_token'] . "&device_id=" . $device_id . "&module_id=" . $module_id . "&scale=max&type=Temperature,CO2,Humidity,Pressure,Noise&date_end=last";
-    
+// Création de(s) l'url(s)
+if ($display_list_devices == true) 
+	$api_liste = "https://api.netatmo.net/api/devicelist?access_token=" . $params['access_token'];
+else {
+	$api_url_int = "https://api.netatmo.net/api/getmeasure?access_token=" . $params['access_token'] . "&device_id=" . $device_id . "&scale=max&type=Temperature,CO2,Humidity,Pressure,Noise&date_end=last";
+	$api_url_ext = "https://api.netatmo.net/api/getmeasure?access_token=" . $params['access_token'] . "&device_id=" . $device_id . "&module_id=" . $module_id . "&scale=max&type=Temperature,CO2,Humidity,Pressure,Noise&date_end=last";
+}
+
+// Récupération des données via l'Api Netatmo
 if ($display_list_devices == true) 
     	$data_liste = file_get_contents($api_liste);
 else {
